@@ -1,0 +1,19 @@
+using CrystalDecisions.CrystalReports.Engine;
+
+private void variablename (event)
+{
+	connection.Open();
+            OleDbCommand command = new OleDbCommand();
+            command.Connection = connection;
+            command.CommandText = "Select * from Book order by AccessionNumber";
+            OleDbDataAdapter da = new OleDbDataAdapter(command);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            CrystalReport1 crp = new CrystalReport1();
+            crp.SetDataSource(dt);
+            crystalReportViewer1.ReportSource = crp;
+            crystalReportViewer1.Refresh();
+            connection.Close();
+}
+
+<startup useLegacyV2RuntimeActivationPolicy="true"> to fix that error
